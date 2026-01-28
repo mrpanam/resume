@@ -1,0 +1,16 @@
+body {
+    font-family: sans-serif;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for active navigation link */
+nav [aria-current="page"] {
+    background-color: #155e75; /* This is the hex value for bg-cyan-800 */
+    color: white;
+    font-weight: 500;
+}
+
+
+

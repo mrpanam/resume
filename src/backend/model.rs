@@ -51,3 +51,13 @@ pub struct AssetWithPrice {
     pub last_price: Option<f64>,
     pub price_change_pct: Option<f64>,
 }
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Trade {
+    pub id: Option<RecordId>,
+    pub asset: RecordId,
+    pub price: f64,
+    pub qty: f64,
+    pub status: String,
+    pub trade_date: Datetime,
+}

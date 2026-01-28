@@ -3,7 +3,7 @@ use leptos::server;
 use std::sync::OnceLock;
 use surrealdb::engine::remote::ws::{Client, Ws};
 use surrealdb::Surreal;
-use crate::backend::model::{AssetWithPrice, Category, Wallet};
+use crate::backend::model::{AssetWithPrice, Category, Trade, Wallet};
 
 
 
@@ -77,4 +77,16 @@ pub async fn get_assets() -> Result<Vec<AssetWithPrice>, ServerFnError> {
     }
 
     Ok(assets)
+}
+
+#[server(GetTrades, "/api")]
+pub async fn get_trades() -> Result<Vec<Trade>, ServerFnError> {
+    let db = get_db();
+
+    let mut response = db
+        .query("SELECT * FROM trade ORDER BY trade_date DESC")
+        .await?;
+    let trades: Vec<Trade> = response.take(0)?;
+
+    Ok(trades)
 }

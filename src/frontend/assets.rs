@@ -27,7 +27,7 @@ fn pct_change_class(pct: Option<f64>) -> &'static str {
 #[component]
 pub fn Assets() -> impl IntoView {
     let assets = Resource::new(|| (), |_| get_assets());
-    let (search, set_search) = create_signal(String::new());
+    let (search, set_search) = signal(String::new());
 
     view! {
         <div class="p-4 max-w-4xl mx-auto">
